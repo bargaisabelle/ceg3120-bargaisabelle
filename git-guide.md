@@ -1,0 +1,38 @@
+- status
+  - Shows status of the local repository. This status includes:
+    - number of local commits that have not been synced with remote (GitHub)
+    - list of files in local folder than are NOT being tracked by git
+    - list of files in local folder that have changes that need to be committed
+  - `git status`
+- clone
+  - used to create a clone or copy of an existing repo in a new directory/location
+  - 'git clone'
+- add
+  - updates the current content of the working paths, can be used to update all files or specific files
+  - 'git add cat.md'
+- rm
+  - used to remove files of directories
+  - rm cat
+- commit
+  - used to record changes to the repository
+  - 'git commit -m "adding updates to cat"'
+- push
+  - uploads local repository content to a remote repository (git) (local -> remote)
+  - 'git push'
+- fetch
+  - used to download content from another repository
+  - 'git fetch'
+- merge
+  - used to join two or more branches that developed seperate lines
+  - 'git merge'
+- pull
+  - used to fetch and integrate from another repository (remote -> local)
+  - 'git pull'
+- branch
+  - used to list, create, or delete branches
+  - 'git branch cat-branch'
+- checkout
+  - used to switch branches or restore working tree files
+  - 'git checkout cat-branch'
+- ~~init~~
+- ~~remote~~
