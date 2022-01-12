@@ -6,33 +6,33 @@
   - `git status`
 - clone
   - used to create a clone or copy of an existing repo in a new directory/location
-  - 'git clone'
+  - `git clone`
 - add
   - updates the current content of the working paths, can be used to update all files or specific files
-  - 'git add cat.md'
+  - `git add cat.md`
 - rm
   - used to remove files of directories
-  - rm cat
+  - `rm cat`
 - commit
   - used to record changes to the repository
-  - 'git commit -m "adding updates to cat"'
+  - `git commit -m "adding updates to cat"`
 - push
   - uploads local repository content to a remote repository (git) (local -> remote)
-  - 'git push'
+  - `git push`
 - fetch
   - used to download content from another repository
-  - 'git fetch'
+  - `git fetch`
 - merge
   - used to join two or more branches that developed seperate lines
-  - 'git merge'
+  - `git merge`
 - pull
   - used to fetch and integrate from another repository (remote -> local)
-  - 'git pull'
+  - `git pull`
 - branch
   - used to list, create, or delete branches
-  - 'git branch cat-branch'
+  - `git branch cat-branch`
 - checkout
   - used to switch branches or restore working tree files
-  - 'git checkout cat-branch'
+  - `git checkout cat-branch`
 - ~~init~~
 - ~~remote~~
