@@ -48,13 +48,17 @@ Entries that are currently crossed out we will either get to later in the course
 ## git files & folders
 
 - .git folder
+  -  contains project information, commit history, and the remote repository address
 - .gitignore file
+  - a plaintext file that contains a pattern that decides what files and directories to ignore when committing to github
 - ~~.git/hooks~~
 
 ## GitHub
 
 - Pull requests
+  - allows you to request that your local repository grab the changes from your remote repository
 - SSH authentication to repositories
+  - a secure network that uses a key based system for remote communication between machines on an unsecured open network 
 - ~~Actions~~
 
 ## Resources
