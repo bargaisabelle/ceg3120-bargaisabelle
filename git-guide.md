@@ -17,13 +17,13 @@ Entries that are currently crossed out we will either get to later in the course
   - `git clone`
 - add
   - updates the current content of the working paths, can be used to update all files or specific files
-  - `git add cat.md`
+  - `git add filename`
 - rm
   - used to remove files of directories
-  - `rm cat`
+  - `rm filename`
 - commit
   - used to record changes to the repository
-  - `git commit -m "adding updates to cat"`
+  - `git commit -m "adding updates to file"`
 - push
   - uploads local repository content to a remote repository (git) (local -> remote)
   - `git push`
@@ -38,10 +38,10 @@ Entries that are currently crossed out we will either get to later in the course
   - `git pull`
 - branch
   - used to list, create, or delete branches
-  - `git branch cat-branch`
+  - `git branch new-branch`
 - checkout
   - used to switch branches or restore working tree files
-  - `git checkout cat-branch`
+  - `git checkout new-branch`
 - ~~init~~
 - ~~remote~~
 
@@ -50,13 +50,18 @@ Entries that are currently crossed out we will either get to later in the course
 - .git folder
   -  contains project information, commit history, and the remote repository address
 - .gitignore file
-  - a plaintext file that contains a pattern that decides what files and directories to ignore when committing to github
+  - a plaintext file that contains files and directories to ignore when committing to github
+  - so `git status' will no longer show these as files to be added to github
+  - when to use:
+    - exclude libraries files that need to be built per system
+    - keep excess off Github
+    - keep secrets off Github
 - ~~.git/hooks~~
 
 ## GitHub
 
 - Pull requests
-  - allows you to request that your local repository grab the changes from your remote repository
+  - used to request changes be merged on Github
 - SSH authentication to repositories
   - a secure network that uses a key based system for remote communication between machines on an unsecured open network 
 - ~~Actions~~
