@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 #print(os.getenv('DISCORD_TOKEN'))
-TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('DISCORD_GUILD')
+TOKEN = os.getenv('OTM1MjExNjAzNjg5ODg5ODIy.Ye7VrQ.f8L2PeGoMDZsNvreB7AFiuECVk4')
+GUILD = os.getenv('3120project1')
 
 client = discord.Client()
 
