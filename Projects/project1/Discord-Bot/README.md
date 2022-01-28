@@ -16,4 +16,6 @@
     - According to my limited research, I have found that using a remote computer program can run a bot 24/7. The most common
     answer was to buy a VPS (vitual private server) that are not too expensive and will host your bot so you do not have to run
     the program all of the time. This seems like it would work because you are paying a server to run it and this is something 
-    many people seem to rely on so it probably trustworthy and works. There were a few freeoptions I saw too. 
+    many people seem to rely on so it probably trustworthy and works. There were a few free options I saw too. 
+  - Proof
+    ![Proof of bot](project1proof.png)
