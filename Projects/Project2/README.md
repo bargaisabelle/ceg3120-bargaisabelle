@@ -6,10 +6,13 @@
 2. Subnet
   - ![]()
   - Makes networks more efficient by allowing them to pass by unnecessary routes
+  - it is a range of ip addresses in your VPC
   
 3. Internet Gateway
   - ![]()
   - connects two different networks and allows the transfer/communication of data to different protocols
+  - enables communication between your VPC and the internet
+  - performs network address translation (NAT) for instances that have been assigned public IPv4 addresses
   
 4. Routing Table
   - ![]()
