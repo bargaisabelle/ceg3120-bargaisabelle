@@ -16,7 +16,7 @@
   
 4. Routing Table
   - ![]()
-  - used to record paths that help determine which way to forward traffic
+  - uses rules(routes) that help determine where network traffic from your subnet or gateway is directed
   
 5. Security Group
   - ![]()
