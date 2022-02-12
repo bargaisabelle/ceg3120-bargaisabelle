@@ -15,11 +15,11 @@
   - performs network address translation (NAT) for instances that have been assigned public IPv4 addresses
   
 4. Routing Table
-  - ![]()
+  - ![route table screenshot](screenshots/routetab.png)
   - uses rules(routes) that help determine where network traffic from your subnet or gateway is directed
   
 5. Security Group
-  - ![]()
+  - ![security group screenshot](screenshots/secgroup.png)
   - controls inbound and outbound traffic for the EC2 instance and manages accounts
   
 ##Part 2
