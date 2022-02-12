@@ -1,4 +1,4 @@
-##Part 1
+## Part 1
 1. VPC
   - ![vpc screenshot](screenshots/vpc.png/)
   - creates a virtual network defined by the user that protects/isolates data and resources in the cloud
@@ -22,4 +22,4 @@
   - ![security group screenshot](screenshots/secgroup.png)
   - controls inbound and outbound traffic for the EC2 instance and manages accounts
   
-##Part 2
+## Part 2
