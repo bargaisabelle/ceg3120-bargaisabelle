@@ -34,5 +34,6 @@
 6. Security group: I selected choose an existing security group and choose "BARGA-sg"
 7. Skip because I auto assigned
 8. ![instance screenshot](images/instance.png/)
-9. sudo hostnamectl set-hostname BARGA-ubuntu2 --static (and log out and back in for it to change)
+9. Change hostname with this command (BARGA-ubuntu2 is the hostname): sudo hostnamectl set-hostname BARGA-ubuntu2 --static 
+  (and log out and back in for it to change)
 10. ![ssh screenshot](images/hostname.png/)
