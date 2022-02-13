@@ -35,4 +35,4 @@
 7. Skip because I auto assigned
 8. ![instance screenshot](images/instance.png/)
 9. sudo hostnamectl set-hostname BARGA-ubuntu2 --static (and log out and back in for it to change)
-10. ![ssh screenshot](images/ssh.png/)
+10. ![ssh screenshot](images/hostname.png/)
