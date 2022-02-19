@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: >-
+Description: Barga CF Template that creates a VPC, alls SSH access from trusted networs, and creates a single instance with an Elastic IP address
   Testing area for AWS: This template builds a linux VM for CEG 2350 @ WSU.
 Parameters:
   KeyName:
