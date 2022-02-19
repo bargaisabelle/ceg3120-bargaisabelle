@@ -21,32 +21,36 @@ Mappings:
   AWSRegionUbuntu: # AMI for Ubuntu server in each supported region 
     us-east-1:   # N. Virginia
       PV64: NOT_SUPPORTED
-      HVM64: ami-07d0cf3af28718ef8
+      HVM64: ami-04505e74c0741db8d
       HVMG2: NOT_SUPPORTED
 Resources:
   VPC:
     Type: 'AWS::EC2::VPC'
     Properties:
-      CidrBlock: 10.0.0.0/16
-      Tags:
-        - Key: Application
-          Value: !Ref 'AWS::StackId'
-        - Key: Name
-          Value: CEG2350 VPC
-  Subnet:
-    Type: 'AWS::EC2::Subnet'
-    Properties:
-      VpcId: !Ref VPC
       CidrBlock: 10.0.0.0/24
       Tags:
         - Key: Application
           Value: !Ref 'AWS::StackId'
+        - Key: Name
+          Value: BARGA-CF-VPC
+  Subnet:
+    Type: 'AWS::EC2::Subnet'
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: 10.0.0.0/28
+      Tags:
+        - Key: Application
+          Value: !Ref 'AWS::StackId'
+        - Key: Name
+          Value: BARGA-CF-SUBNET
   InternetGateway:
     Type: 'AWS::EC2::InternetGateway'
     Properties:
       Tags:
         - Key: Application
           Value: !Ref 'AWS::StackId'
+        - Key: Name
+          Value: BARGA-CF-IG
   AttachGateway:
     Type: 'AWS::EC2::VPCGatewayAttachment'
     Properties:
@@ -59,6 +63,8 @@ Resources:
       Tags:
         - Key: Application
           Value: !Ref 'AWS::StackId'
+        - Key: Name
+          Value: BARGA-CF-SUBNET
   Route:
     Type: 'AWS::EC2::Route'
     DependsOn: AttachGateway
@@ -81,21 +87,21 @@ Resources:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
       VpcId: !Ref VPC
-      GroupDescription: Enable SSH access via port 22 and open all insternal ports.
+      GroupDescription: Enable SSH access via port 22 and open all internal ports.
       SecurityGroupIngress:
-        - IpProtocol: tcp
+        - IpProtocol: ssh
           FromPort: '22'
           ToPort: '22'
           CidrIp: !Ref SSHLocation
-        - IpProtocol: tcp
+        - IpProtocol: ssh
           FromPort: '22'
           ToPort: '22'
           CidrIp: 130.108.0.0/16  # WSU CIDR
-        - IpProtocol: -1
-          FromPort: '-1'
-          ToPort: '-1'
-          CidrIp: 10.0.0.0/24
-        - IpProtocol: tcp
+        - IpProtocol: ssh
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: 76.190.80.35
+        - IpProtocol: ssh
           FromPort: '1'
           ToPort: '65535'
           CidrIp: 0.0.0.0/0
@@ -117,6 +123,8 @@ Resources:
           Value: !Ref 'AWS::StackId'
         - Key: Name
           Value: CEG2350 Ubuntu
+        - Key: Name
+          Value: BARGA-CF-instance
       NetworkInterfaces:
         - GroupSet:
             - !Ref Lab1SecurityGroup
@@ -132,7 +140,7 @@ Resources:
             apt-get update && \
             apt-get install -y \
               git \
-              htop \
-              sl && \
+              python3 \
+              pip3 && \
             echo "This is from the CF template" > /home/ubuntu/hello.txt && \
             reboot
