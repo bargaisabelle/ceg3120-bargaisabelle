@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: Barga CF Template that creates a VPC, alls SSH access from trusted networs, and creates a single instance with an Elastic IP address
-  Testing area for AWS: This template builds a linux VM for CEG 2350 @ WSU.
+  Testing area for AWS: This template builds a linux VM for CEG 3120 @ WSU.
 Parameters:
   KeyName:
     Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
@@ -36,7 +36,7 @@ Resources:
   Subnet:
     Type: 'AWS::EC2::Subnet'
     Properties:
-      VpcId: !Ref VPC
+      VpcId: BARGA-CF-VPC
       CidrBlock: 10.0.0.0/28
       Tags:
         - Key: Application
@@ -54,12 +54,12 @@ Resources:
   AttachGateway:
     Type: 'AWS::EC2::VPCGatewayAttachment'
     Properties:
-      VpcId: !Ref VPC
+      VpcId: BARGA-CF-VPC
       InternetGatewayId: !Ref InternetGateway
   RouteTable:
     Type: 'AWS::EC2::RouteTable'
     Properties:
-      VpcId: !Ref VPC
+      VpcId: BARGA-CF-VPC
       Tags:
         - Key: Application
           Value: !Ref 'AWS::StackId'
