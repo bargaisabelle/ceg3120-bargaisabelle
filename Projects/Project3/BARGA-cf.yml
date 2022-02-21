@@ -36,7 +36,7 @@ Resources:
   Subnet:
     Type: 'AWS::EC2::Subnet'
     Properties:
-      VpcId: BARGA-CF-VPC
+      VpcId: !Ref VPC
       CidrBlock: 10.0.0.0/28
       Tags:
         - Key: Application
@@ -54,12 +54,12 @@ Resources:
   AttachGateway:
     Type: 'AWS::EC2::VPCGatewayAttachment'
     Properties:
-      VpcId: BARGA-CF-VPC
+      VpcId: !Ref VPC
       InternetGatewayId: !Ref InternetGateway
   RouteTable:
     Type: 'AWS::EC2::RouteTable'
     Properties:
-      VpcId: BARGA-CF-VPC
+      VpcId: !Ref VPC
       Tags:
         - Key: Application
           Value: !Ref 'AWS::StackId'
@@ -122,7 +122,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: CEG2350 Ubuntu
+          Value: CEG3120 Ubuntu
         - Key: Name
           Value: BARGA-CF-instance
       NetworkInterfaces:
