@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: Barga CF Template that creates a VPC, alls SSH access from trusted networs, and creates a single instance with an Elastic IP address
+Description: >-
   Testing area for AWS: This template builds a linux VM for CEG 3120 @ WSU.
 Parameters:
   KeyName:
@@ -32,7 +32,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: BARGA-CF-VPC
+          Value: Barga-CF-VPC
   Subnet:
     Type: 'AWS::EC2::Subnet'
     Properties:
@@ -42,7 +42,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: BARGA-CF-SUBNET
+          Value: Barga-CF-subnet
   InternetGateway:
     Type: 'AWS::EC2::InternetGateway'
     Properties:
@@ -50,7 +50,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: BARGA-CF-IG
+          Value: Barga-CF-internetgateway
   AttachGateway:
     Type: 'AWS::EC2::VPCGatewayAttachment'
     Properties:
@@ -63,8 +63,8 @@ Resources:
       Tags:
         - Key: Application
           Value: !Ref 'AWS::StackId'
-        - Key: Name
-          Value: BARGA-CF-SUBNET
+        - Key: Application
+          Value: Barga-CF-routetable
   Route:
     Type: 'AWS::EC2::Route'
     DependsOn: AttachGateway
@@ -87,7 +87,7 @@ Resources:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
       VpcId: !Ref VPC
-      GroupDescription: Enable SSH access via port 22 and open all internal ports.
+      GroupDescription: Enable SSH access via port 22 and open all insternal ports.
       SecurityGroupIngress:
         - IpProtocol: ssh
           FromPort: '22'
@@ -100,11 +100,11 @@ Resources:
         - IpProtocol: ssh
           FromPort: '22'
           ToPort: '22'
-          CidrIp: 76.190.80.35
+          CidrIp: 10.0.0.0/24
         - IpProtocol: ssh
-          FromPort: '1'
-          ToPort: '65535'
-          CidrIp: 0.0.0.0/0
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: 76.190.80.35
   PublicUbuntuInstance:
     Type: 'AWS::EC2::Instance'
     DependsOn: AttachGateway
@@ -122,9 +122,9 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: CEG3120 Ubuntu
+          Value: CEG3120-ubuntu
         - Key: Name
-          Value: BARGA-CF-instance
+          Value: Barga-CF-instance
       NetworkInterfaces:
         - GroupSet:
             - !Ref Lab1SecurityGroup
@@ -137,10 +137,11 @@ Resources:
         Fn::Base64:
           !Sub |
             #!/bin/bash -xe
+            hostnamectl set-hostname Barga-CF --static && \
             apt-get update && \
             apt-get install -y \
               git \
               python3 \
               pip3 && \
-            echo "This is from the CF template" > /home/ubuntu/hello.txt && \
+            echo "This creates a ceg3120 stack" > /home/ubuntu/hello.txt && \
             reboot
