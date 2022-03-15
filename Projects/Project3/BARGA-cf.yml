@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
-  Testing area for AWS: This template builds a linux VM for CEG 3120 @ WSU.
+  Barga CF creates a vpc, allows ssh access from trusted networks, and create a single instance with an elastic ip.
 Parameters:
   KeyName:
     Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
@@ -89,22 +89,22 @@ Resources:
       VpcId: !Ref VPC
       GroupDescription: Enable SSH access via port 22 and open all insternal ports.
       SecurityGroupIngress:
-        - IpProtocol: ssh
+        - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
           CidrIp: !Ref SSHLocation
-        - IpProtocol: ssh
+        - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
           CidrIp: 130.108.0.0/16  # WSU CIDR
-        - IpProtocol: ssh
+        - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
           CidrIp: 10.0.0.0/24
-        - IpProtocol: ssh
+        - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
-          CidrIp: 76.190.80.35
+          CidrIp: 76.190.80.35/32
   PublicUbuntuInstance:
     Type: 'AWS::EC2::Instance'
     DependsOn: AttachGateway
@@ -122,7 +122,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: CEG3120-ubuntu
+          Value: ceg3120ubuntu
         - Key: Name
           Value: Barga-CF-instance
       NetworkInterfaces:
@@ -132,16 +132,15 @@ Resources:
           DeviceIndex: '0'
           DeleteOnTermination: 'true'
           SubnetId: !Ref Subnet
-          PrivateIpAddress: 10.0.0.25
+          PrivateIpAddress: 10.0.0.9
       UserData:
         Fn::Base64:
           !Sub |
             #!/bin/bash -xe
-            hostnamectl set-hostname Barga-CF --static && \
+            hostnamectl set-hostname Barga-CF && \
             apt-get update && \
             apt-get install -y \
               git \
               python3 \
               pip3 && \
-            echo "This creates a ceg3120 stack" > /home/ubuntu/hello.txt && \
             reboot
