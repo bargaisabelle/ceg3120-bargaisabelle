@@ -140,8 +140,16 @@ Resources:
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
-          CidrIp: 108.222.118.252/32  # Replace with home / trusted public IP
+          CidrIp: 76.190.80.35/32  # Replace with home / trusted public IP
           # TODO Need more rules for port 80 access
+        - IpProtocol: tcp
+          FromPort: '80'
+          ToPort: '80'
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: '80'
+          ToPort: '80'
+          CidrIp: 10.0.0.0/16          
       Tags: 
         - Key: Name
           Value: P4-sg
@@ -177,7 +185,7 @@ Resources:
             #!/bin/bash -xe
             apt-get update && \
             # TODO need to install haproxy
-            apt-get install -y git python3 python3-pip && \
+            apt-get install -y git python3 python3-pip haproxy && \
             hostnamectl set-hostname proxy && \
             reboot
   WebServ1Instance:
@@ -206,13 +214,40 @@ Resources:
           DeleteOnTermination: 'true'
           SubnetId: !Ref PrivateSubnet
           PrivateIpAddress: 10.0.1.10 # TODO make sure unique to the instance
+  WebServ2Instance:
+    Type: 'AWS::EC2::Instance'
+    DependsOn: AttachGateway
+    Properties:
+      ImageId: !FindInMap 
+        - AWSRegionUbuntu
+        - !Ref 'AWS::Region'
+        - !FindInMap 
+          - AWSInstanceType2Arch
+          - t2.micro
+          - Arch
+      InstanceType: t2.micro
+      KeyName: !Ref KeyName
+      Tags:
+        - Key: Application
+          Value: !Ref 'AWS::StackId'
+        - Key: Name
+          Value: webserv2
+      NetworkInterfaces:
+        - GroupSet:
+            - !Ref SecurityGroup
+          AssociatePublicIpAddress: 'false'
+          DeviceIndex: '0'
+          DeleteOnTermination: 'true'
+          SubnetId: !Ref PrivateSubnet
+          PrivateIpAddress: 10.0.3.10 # TODO make sure unique to the instance          
       UserData:
         Fn::Base64:
           !Sub |
             #!/bin/bash -xe
             apt-get update && \
             # TODO need to install apache or nginx
-            apt-get install -y git && \
+            apt-get install -y git apache2 && \
             # TODO give it a hostname - hostnamectl  && \
+            hostnamectl set-hostname Barga-CF && \
             reboot
 # TODO: create another webserver instance attached to the private subnet
