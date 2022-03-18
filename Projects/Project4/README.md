@@ -12,7 +12,8 @@ web serv2: ssh -i /home/ubuntu/.ssh/ceg3120-aws-vm.pem ubuntu@10.0.1.11 or ssh w
      - What file(s) where modified & their location
       - /etc/haproxy/haproxy.cfg
      - What configuration(s) were set (if any)
-      - frontend 34.238.34.186
+     ```
+        frontend 34.238.34.186
            bind 10.0.0.10:80
            default_backend web_servers
            bind *:8404
@@ -26,9 +27,13 @@ web serv2: ssh -i /home/ubuntu/.ssh/ceg3120-aws-vm.pem ubuntu@10.0.1.11 or ssh w
            option httpchk HEAD /
            server webserv1 10.0.1.10:80
            server webserv2 10.0.1.11:80
+     ```
      - How to restart the service after a configuration change
-      - sudo systemctl restart haproxy
+      ```
+      sudo systemctl restart haproxy
+      ```
      - Resources used (websites)
+         * https://www.haproxy.com/blog/the-four-essential-sections-of-an-haproxy-configuration/
 4. **_Webserver 1 & 2 configuration & documentation requirements_**
    - How set up a webserver
      - What file(s) were modified & their location
