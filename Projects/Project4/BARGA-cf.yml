@@ -190,7 +190,7 @@ Resources:
             reboot
   WebServ1Instance:
     Type: 'AWS::EC2::Instance'
-    DependsOn: AttachGateway
+    DependsOn: NATGateway
     Properties:
       ImageId: !FindInMap 
         - AWSRegionUbuntu
@@ -214,9 +214,19 @@ Resources:
           DeleteOnTermination: 'true'
           SubnetId: !Ref PrivateSubnet
           PrivateIpAddress: 10.0.1.10 # TODO make sure unique to the instance
+      UserData:
+        Fn::Base64:
+          !Sub |
+            #!/bin/bash -xe
+            apt-get update && \
+            # TODO need to install apache or nginx
+            apt-get install -y git apache2 && \
+            # TODO give it a hostname - hostnamectl  && \
+            hostnamectl set-hostname webserv1 && \
+            reboot
   WebServ2Instance:
     Type: 'AWS::EC2::Instance'
-    DependsOn: AttachGateway
+    DependsOn: NATGateway
     Properties:
       ImageId: !FindInMap 
         - AWSRegionUbuntu
@@ -239,7 +249,7 @@ Resources:
           DeviceIndex: '0'
           DeleteOnTermination: 'true'
           SubnetId: !Ref PrivateSubnet
-          PrivateIpAddress: 10.0.3.10 # TODO make sure unique to the instance          
+          PrivateIpAddress: 10.0.1.11 # TODO make sure unique to the instance          
       UserData:
         Fn::Base64:
           !Sub |
@@ -248,6 +258,6 @@ Resources:
             # TODO need to install apache or nginx
             apt-get install -y git apache2 && \
             # TODO give it a hostname - hostnamectl  && \
-            hostnamectl set-hostname Barga-CF && \
+            hostnamectl set-hostname webserv2 && \
             reboot
 # TODO: create another webserver instance attached to the private subnet
