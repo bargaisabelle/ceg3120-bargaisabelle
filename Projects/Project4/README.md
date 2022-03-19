@@ -58,11 +58,10 @@ web serv2: ssh -i /home/ubuntu/.ssh/ceg3120-aws-vm.pem ubuntu@10.0.1.11 or ssh w
 
    ![server 1 screenshoot](server1.png)
    - one screenshot that shows content from "server 2"
-   - (adding proof that my webserver's are set up correctly (so we think) but it still wont switch between them on the browser)
 
 
-   ![server screenshot](server2.png)
-   ![haproxy config screenshot](haoroxy.png)
+   ![server screenshot](fixserver2.png)
+
 6. (Optional) - link to your proxy so I can click it.
 
 
