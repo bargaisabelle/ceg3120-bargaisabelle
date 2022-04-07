@@ -15,9 +15,9 @@
     - http://localhost:8080/
     - http://127.0.0.1:8080
 
-![curl 8080](curl8080.png)
-![web 8080](web8080.png)
-![port running](port8080.png)
+![curl 8080](images/curl8080.png)
+![web 8080](images/web8080.png)
+![port running](images/port8080.png)
   
 ### Part 2 - GitHub Actions and DockerHub  
   
