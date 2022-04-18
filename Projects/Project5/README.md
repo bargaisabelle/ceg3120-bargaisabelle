@@ -77,8 +77,9 @@ jobs:
 ### Part 3 - Deployment
 
 - Container restart script
-  - #!/bin/bash
-```
+ ```
+ #!/bin/bash
+
 # Pull docker image
 # Docker pull bargaisabelle/mysite:latest
 # Kill old running container (to clear host port)
@@ -97,13 +98,22 @@ echo "run container cheese"
 docker run -d --name cheese --rm -p 80:80 bargaisabelle/mysite:latest
 ```
 - Webhook task definition file
-  - what it does
+```
+[Unit]
+Description=Webhooks
+
+[Service]
+ExecStart=/home/ubuntu/go/bin/webhook -hooks /home/ubuntu/redeploy.json -hotreload
+
+[Install]
+WantedBy=multi-user.target
+```
 - Setting up a webhook on the server
   - How you created you own listener
   - How you installed and are running the [webhook on GitHub](https://github.com/adnanh/webhook)
     - First install Go: ```sudo snap install go```
     - Extract the files with tar: sudo tar -C /usr/local -xzf go1.18.1.linux-amd64.tar.gz
     - Can manually add the PATH to .profile or use ```echo "export PATH=$PATH:/usr/local/go/bin">> .profile```
-    - go build github.com/adnanh/webhook@latest
-    - /home/ubuntu/go/bin/webhook -hooks /home/ubuntu/redeploy.json -verbose >> /home/ubuntu/logs.txt
+    - Install webhook: ```go install github.com/adnanh/webhook@latest```
+    - Redirect output to logs.txt: /home/ubuntu/go/bin/webhook -hooks /home/ubuntu/redeploy.json -verbose >> /home/ubuntu/logs.txt
 - Setting up a notifier in GitHub or DockerHub
