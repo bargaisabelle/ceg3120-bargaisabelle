@@ -128,8 +128,9 @@ docker run -d --name cheese -p 80:80 bargaisabelle/mysite:latest
 ### Part 4 - Diagramming
 ```mermaid
   graph TD;
-      A-->B;
-      A-->C;
-      B-->D;
-      C-->D;
+      A[Install Docker] -->B{Have you installed Docker?};
+      B -- No --> C[sudo apt install docker.io];
+      B -- Yes --> D[Build container];
+      C --> D[Build container];
+      D --> E[Run the container];
 ```
