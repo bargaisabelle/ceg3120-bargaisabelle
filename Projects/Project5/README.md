@@ -154,7 +154,7 @@ docker run -d --name cheese -p 80:80 bargaisabelle/mysite:latest
       T --> U{Have you installed go/webhooks?};
       U -- No --> V[sudo snap install go];
       V --> W[Export path to .profile];
-      W --> X[go install github.com/adnanh/webhook@latest];
+      W --> X[go install webhook with adnanh];
       U -- Yes --> Y[Run the Webhook];
       X --> Y;
       Y --> Z[Set up notifier in Docker Hub];
