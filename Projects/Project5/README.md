@@ -124,3 +124,12 @@ docker run -d --name cheese --rm -p 80:80 bargaisabelle/mysite:latest
     - Mine was http://3.93.202.229:9000/hooks/redeploy
 
 ![webhook notifier](../images/notifier.png)
+
+### Part 4 - Diagramming
+```mermaid
+  graph TD;
+      A-->B;
+      A-->C;
+      B-->D;
+      C-->D;
+```
