@@ -77,6 +77,7 @@ jobs:
 ### Part 3 - Deployment
 
 - Container restart script
+  - pull-restart.sh
  ```
  #!/bin/bash
 
@@ -98,15 +99,15 @@ echo "run container cheese"
 docker run -d --name cheese --rm -p 80:80 bargaisabelle/mysite:latest
 ```
 - Webhook task definition file
+  - redeploy.json:
 ```
-[Unit]
-Description=Webhooks
-
-[Service]
-ExecStart=/home/ubuntu/go/bin/webhook -hooks /home/ubuntu/redeploy.json -hotreload
-
-[Install]
-WantedBy=multi-user.target
+[
+        {
+                "id": "redeploy",
+                "execute-command": "/home/ubuntu/pull-restart.sh",
+                "command-working-directory": "/var/webhook"
+        }
+]
 ```
 - Setting up a webhook on the server
   - How you created you own listener
