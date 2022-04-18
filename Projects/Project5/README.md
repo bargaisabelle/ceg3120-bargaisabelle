@@ -96,7 +96,7 @@ docker pull bargaisabelle/mysite:latest
 
 # Run new container
 echo "run container cheese"
-docker run -d --name cheese --rm -p 80:80 bargaisabelle/mysite:latest
+docker run -d --name cheese -p 80:80 bargaisabelle/mysite:latest
 ```
 - Webhook task definition file
   - redeploy.json:
