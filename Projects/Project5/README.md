@@ -118,4 +118,9 @@ docker run -d --name cheese --rm -p 80:80 bargaisabelle/mysite:latest
     - Can manually add the PATH to .profile or use ```echo "export PATH=$PATH:/usr/local/go/bin">> .profile```
     - Install webhook: ```go install github.com/adnanh/webhook@latest```
     - Redirect output to logs.txt: /home/ubuntu/go/bin/webhook -hooks /home/ubuntu/redeploy.json -verbose >> /home/ubuntu/logs.txt
-- Setting up a notifier in GitHub or DockerHub
+- Setting up a notifier in DockerHub
+  - Access your repository and select 'Webhooks'
+  - Paste the link to your hook: http://public-ip:port/hooks/id and give it a name
+    - Mine was http://3.93.202.229:9000/hooks/redeploy
+
+![webhook notifier](images/notifier.png)
