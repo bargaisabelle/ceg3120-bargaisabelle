@@ -158,5 +158,17 @@ docker run -d --name cheese -p 80:80 bargaisabelle/mysite:latest
       U -- Yes --> Y[Run the Webhook];
       X --> Y;
       Y --> Z[Set up notifier in Docker Hub];
-      Z --> A2[does this work?];
+      Z --> A2[Paste the link to the webhook in the browser];
+      A2 --> B2{Did it work?};
+      B2 -- Yes --> C2[You Win!];
+      B2 -- No --> D2{Check that you downloaded the correct version of go};
+      D2 -- Yes --> E2[Check the server for your public ip];
+      D2 -- No --> Z;
+      E2 --> F2{Is it displaying your html?};
+      F2 -- Yes --> G2[Let your notifier deal with it, you are done];
+      F2 -- No --> H2[Check that the server is displaying over your port];
+      H2 --> I2{Is it the port open?};
+      I2 -- Yes --> K;
+      I2 -- No --> J2[open the port];
+      J2 --> A2;
 ```
