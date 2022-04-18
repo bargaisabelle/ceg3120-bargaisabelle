@@ -143,7 +143,7 @@ docker run -d --name cheese -p 80:80 bargaisabelle/mysite:latest
       J -- Yes --> K[Check Google];
       J -- No --> C;
       L --> M[Create Docker Hub repository];
-      M --> N[Create a "New Access Token"];
+      M --> N[Create a New Access Token];
       N --> O[Make username and password(token) secrets];
       O --> P[Create a .yml file in workflows to login, build, and push to dockerhub];
       P --> Q{Ready for Part 3?};
