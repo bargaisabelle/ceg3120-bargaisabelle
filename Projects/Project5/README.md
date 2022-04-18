@@ -110,6 +110,7 @@ WantedBy=multi-user.target
 ```
 - Setting up a webhook on the server
   - How you created you own listener
+    - /home/ubuntu/go/bin/webhook -hooks /home/ubuntu/redeploy.json -verbose >> /home/ubuntu/logs
   - How you installed and are running the [webhook on GitHub](https://github.com/adnanh/webhook)
     - First install Go: ```sudo snap install go```
     - Extract the files with tar: sudo tar -C /usr/local -xzf go1.18.1.linux-amd64.tar.gz
