@@ -142,4 +142,20 @@ docker run -d --name cheese -p 80:80 bargaisabelle/mysite:latest
       I -- No --> B;
       J -- Yes --> K[Check Google];
       J -- No --> C;
+      L --> M[Create Docker Hub repository];
+      M --> N[Create a "New Access Token"];
+      N --> O[Make username and password(token) secrets];
+      O --> P[Create a .yml file in workflows to login, build, and push to dockerhub];
+      P --> Q{Ready for Part 3?};
+      Q -- No --> K;
+      Q -- Yes --> R[Create a script that restarts the container];
+      R --> S[Create hook id/.json file];
+      S --> T[Create listener];
+      T --> U{Have you installed go/webhooks?};
+      U -- No --> V[sudo snap install go];
+      V --> W[Export path to .profile];
+      W --> X[go install github.com/adnanh/webhook@latest];
+      U -- Yes --> Y[Run the Webhook];
+      X --> Y;
+      Y --> Z[Set up notifier in Docker Hub];
 ```
