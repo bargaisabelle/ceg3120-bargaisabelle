@@ -123,4 +123,4 @@ docker run -d --name cheese --rm -p 80:80 bargaisabelle/mysite:latest
   - Paste the link to your hook: http://public-ip:port/hooks/id and give it a name
     - Mine was http://3.93.202.229:9000/hooks/redeploy
 
-![webhook notifier](images/notifier.png)
+![webhook notifier](../images/notifier.png)
