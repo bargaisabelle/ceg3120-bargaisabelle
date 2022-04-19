@@ -6,11 +6,11 @@
 - Project Overview
 - Run Project Locally
   - how you installed docker + dependencies (WSL2, for example)
-    - sudo apt install docker.io
+    - ```sudo apt install docker.io```
   - how to build the container
-    - sudo docker build -t my-apache2 .
+    - ```sudo docker build -t my-apache2 .```
   - how to run the container
-    - sudo docker run --rm -it -p 8080:80 ubuntu
+    - ```sudo docker run --rm -it -p 8080:80 ubuntu```
   - how to view the project (open a browser...go to ip and port...)
     - http://localhost:8080/
     - http://127.0.0.1:8080
@@ -111,13 +111,13 @@ docker run -d --name cheese -p 80:80 bargaisabelle/mysite:latest
 ```
 - Setting up a webhook on the server
   - How you created you own listener
-    - /home/ubuntu/go/bin/webhook -hooks /home/ubuntu/redeploy.json -verbose >> /home/ubuntu/logs
+    - ```/home/ubuntu/go/bin/webhook -hooks /home/ubuntu/redeploy.json -verbose >> /home/ubuntu/logs```
   - How you installed and are running the [webhook on GitHub](https://github.com/adnanh/webhook)
     - First install Go: ```sudo snap install go```
-    - Extract the files with tar: sudo tar -C /usr/local -xzf go1.18.1.linux-amd64.tar.gz
+    - Extract the files with tar: ```sudo tar -C /usr/local -xzf go1.18.1.linux-amd64.tar.gz```
     - Can manually add the PATH to .profile or use ```echo "export PATH=$PATH:/usr/local/go/bin">> .profile```
     - Install webhook: ```go install github.com/adnanh/webhook@latest```
-    - Redirect output to logs.txt: /home/ubuntu/go/bin/webhook -hooks /home/ubuntu/redeploy.json -verbose >> /home/ubuntu/logs.txt
+    - Redirect output to logs.txt: ```/home/ubuntu/go/bin/webhook -hooks /home/ubuntu/redeploy.json -verbose >> /home/ubuntu/logs.txt```
 - Setting up a notifier in DockerHub
   - Access your repository and select 'Webhooks'
   - Paste the link to your hook: http://public-ip:port/hooks/id and give it a name
