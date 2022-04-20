@@ -15,7 +15,7 @@
     - http://localhost:8080/
     - http://127.0.0.1:8080
 
-![public ip 8080](../website/pubip8080.png)
+![public ip 8080](website/pubip8080.png)
 ![port running](../images/port8080.png)
   
 ### Part 2 - GitHub Actions and DockerHub  
