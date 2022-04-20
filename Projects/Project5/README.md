@@ -2,8 +2,8 @@
 
 ### Part 1 - Dockerize it
 
-- Create `README.md` in main folder of your repo that details the following:
 - Project Overview
+  - 
 - Run Project Locally
   - how you installed docker + dependencies (WSL2, for example)
     - ```sudo apt install docker.io```
@@ -15,14 +15,11 @@
     - http://localhost:8080/
     - http://127.0.0.1:8080
 
-![curl 8080](../images/curl8080.png)
-![web 8080](../images/web8080.png)
+![public ip 8080](../website/pubip8080.png)
 ![port running](../images/port8080.png)
   
 ### Part 2 - GitHub Actions and DockerHub  
   
-- Update `README.md` in main folder of your repo to include:
-
 - Create DockerHub public repo
   - process to create
     - access Docker Hub
