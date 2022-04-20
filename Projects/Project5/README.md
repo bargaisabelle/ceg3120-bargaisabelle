@@ -11,10 +11,12 @@
     - ```sudo docker build -t my-apache2 .```
   - how to run the container
     - ```sudo docker run --rm -it -p 8080:80 ubuntu```
+    - ```sudo docker run --rm -it -p 8080:80 bargaisabelle/mysite:latest``` - if pulled from dockerhub to local
   - how to view the project (open a browser...go to ip and port...)
     - http://localhost:8080/
     - http://127.0.0.1:8080
 
+![localhost](website/localhost.png)
 ![public ip 8080](website/pubip8080.png)
 ![port running](../images/port8080.png)
   
